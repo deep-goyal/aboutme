@@ -1,0 +1,43 @@
+export const metadata = {
+  title: 'Bentune',
+  description: 'An instruction-tuned large language model that excels in math and logic.',
+  alternates: {
+    canonical: '/project/bentune',
+  },
+};
+
+# Bentune
+
+Bentune is an instruction-tuned, fine-tuned LLM based on LLaMA 3.2 (3B) that excels at chain-of-thought reasoning, enabling it to solve complex arithmetic and reasoning tasks with high accuracy.
+
+## Fine-Tuning Process
+
+- **Base Model**: LLaMA 3.2 3B
+- **Instruction Tuning & Chain-of-Thought**: We applied instruction tuning with chain-of-thought prompts to improve reasoning capabilities.
+- **Compute Resources**: Training conducted on ASU’s SOL supercomputing cluster using 4 CPU nodes and a single NVIDIA A100 GPU.
+- **Training Framework**: Built with Hugging Face Transformers, Accelerate, and PyTorch.
+
+## Datasets
+
+- **gsm8k** (main split)
+- **hotpot_qa** (distractor split)
+- **mandarjoshi/trivia_qa** (rc split)
+- **sentence-transformers/natural-questions** (pair split)
+- **domenicrosati/TruthfulQA** (default split)
+- **Anthropic/hh-rlhf** (default split)
+
+## BIG-Bench Subsets
+
+boolean_expressions, causal_judgement, date_understanding, disambiguation_qa, dyck_languages, formal_fallacies, geometric_shapes, hyperbaton, logical_deduction_five_objects, logical_deduction_seven_objects, logical_deduction_three_objects, movie_recommendation, multistep_arithmetic_two, navigate, object_counting, penguins_in_a_table, reasoning_about_colored_objects, ruin_names, salient_translation_error_detection, snarks, sports_understanding, temporal_sequences, tracking_shuffled_objects_five_objects, tracking_shuffled_objects_seven_objects, tracking_shuffled_objects_three_objects, web_of_lies, word_sorting
+
+
+## Repositories
+
+- [**LLM Training Code**](https://github.com/bentune-3b/llm)
+- [**Backend Server**](https://github.com/bentune-3b/backend-server.git)
+- [**Frontend**](https://github.com/deep-goyal/bentune-front)
+- [**Model Weights**](https://huggingface.co/deepindots/bentune)
+
+## Team
+
+Namita Shah &middot; Jay Pavuluri &middot; Evan Zhu &middot; Navni Athale
