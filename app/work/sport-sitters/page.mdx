@@ -1,0 +1,132 @@
+export const metadata = {
+  title: 'Internship III',
+  description:
+    "This page contains information about Deep's experience as a Software Engineer Intern at Sport Sitters",
+  alternates: {
+    canonical: '/work/sport-sitters',
+  },
+}
+
+# Software Engineer Intern at Sport Sitters
+
+## TL;DR
+
+Led a fast-paced migration and refactor of a janky mobile MVP, converted 30k+ lines of JS to TypeScript, upgraded React Native, rebuilt the admin portal from the ground up, and stabilized production while shipping features across frontend and backend in cross-functional sprints.
+
+---
+
+## Role & responsibilities
+
+- Title: Software Engineer Intern
+- Core responsibilities:
+  - Upgrade and modernize legacy React Native mobile app.
+  - Migrate codebase from JavaScript to TypeScript, driving modularity and maintainability.
+  - Rebuild the admin platform to provide full operational control and analytics.
+  - Maintain production stability during aggressive feature work.
+  - Work closely with product, design, and backend teams across rapid sprints.
+
+---
+
+## Project journal — structured by major workstreams
+
+### 1) Emergency migration & stabilization (Weeks 0–3)
+
+Problem:
+
+- The MVP used React Native 0.71 and many deprecated dependencies that caused frequent crashes.
+- Codebase was large, untyped, and difficult to maintain.
+
+Work done:
+
+- Upgraded RN 0.71 → 0.74 to restore compatibility with key libraries and Expo.
+- Migrated core app from JavaScript to TypeScript incrementally.
+- Converted ~30,000+ lines of JS to TS with a focus on safe typing and modular boundaries.
+- Replaced or patched unstable 3rd-party deps; audited ~50 packages and standardized versions.
+
+Impact:
+
+- Reduced runtime crashes and improved developer velocity.
+- Enabled safer refactors and type-driven confidence for future work.
+
+### 2) Modular refactor & architecture
+
+Approach:
+
+- Introduced clear module boundaries (services, UI components, navigation, state).
+- Centralized API contracts and types to minimize brittle integrations.
+- Converted Redux usage to typed actions/selectors where possible.
+
+Outcome:
+
+- Smaller, testable modules and fewer cross-cutting side effects.
+- Faster onboarding for other developers and easier code reviews.
+
+### 3) Admin platform rebuild
+
+Scope:
+
+- Entirely rebuilt the admin portal (Next.js + React) for operators and moderators.
+
+Features:
+
+- Full user management: view/edit users, account status, and activity logs.
+- Booking oversight: search, filter, and manage bookings and refunds (Stripe integration).
+- Moderation tools: view messages flagged by Perspective API, suspend accounts, and audit trails.
+- Analytics & insights: revenue dashboards, engagement metrics, and churn indicators.
+- Intuitive chat UI with clear visual hierarchy to speed moderator actions.
+
+Impact:
+
+- Admins gained end-to-end operational control and reliable auditability.
+- Faster triage and moderation reduced response time for incidents.
+
+### 4) Production safety & monitoring
+
+- Integrated Perspective API to surface toxic content and automated moderation rules.
+- Implemented structured logging and cross-service tracing (Firebase + Google Cloud).
+- Added defensive code paths and graceful degradation where unstable deps existed.
+
+Result:
+
+- Platform remained stable during ongoing development; fewer emergency rollbacks.
+
+### 5) Cross-functional delivery & sprint work
+
+- Regular participation in fast two-week sprints with product and design.
+- Frequent context switching: shipped UI features, designed interface flows, debugged serverless functions, and iterated on admin UX.
+- Prioritized “keep the lights on” tasks while delivering major improvements.
+
+---
+
+## Metrics & impact (examples recruiters care about)
+
+- ~30k lines migrated to TypeScript in the first months.
+- Admin portal rebuilt → reduced average moderation time by an estimated 40% (operational observation).
+- Crash rate reduced after RN upgrade and dependency consolidation (qualitative and monitoring-backed).
+- Faster iteration: new feature lead times shortened due to modular architecture and types.
+
+---
+
+## Challenges & learnings
+
+- Challenge: Migrating a large untyped codebase while keeping production running.
+  - Approach: Incremental typing, strict test/monitoring, and staged rollouts.
+- Challenge: Dealing with many deprecated packages.
+  - Approach: Audit, patch, or replace; where replacement wasn’t available, added defensive checks.
+- Learning: Prioritizing developer experience (types, modular code) pays off immediately in velocity and reliability.
+
+---
+
+## Notable contributions
+
+- RN upgrade to 0.74 and Expo compatibility fixes.
+- Full JS → TS migration of core mobile codebase (30k+ lines).
+- Rebuilt admin portal with moderation, billing, and analytics UI.
+- Integration of Perspective API for safer chat.
+- End-to-end ownership: from UI design adjustments to backend function fixes.
+
+---
+
+## Skills
+
+React Native (Expo) &middot; Next.js &middot; TypeScript &middot; Redux &middot; Firebase (Functions + Firestore) &middot; Google Cloud &middot; Places API &middot; Perspective API (chat moderation) &middot; Stripe API &middot; and ~50+ npm packages for UI and utilities.

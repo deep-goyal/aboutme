@@ -2,19 +2,19 @@ export const metadata = {
   title: 'Bentune',
   description: 'An instruction-tuned large language model that excels in math and logic.',
   alternates: {
-    canonical: '/project/bentune',
+    canonical: '/projects/bentune',
   },
 };
 
 # Bentune
 
-Bentune is an instruction-tuned, fine-tuned LLM based on LLaMA 3.2 (3B) that excels at chain-of-thought reasoning, enabling it to solve complex arithmetic and reasoning tasks with high accuracy.
+Bentune is an instruction-tuned large language model that is fine-tuned to excel at complex mathematics and reasoning tasks. 
 
 ## Fine-Tuning Process
 
 - **Base Model**: LLaMA 3.2 3B
 - **Instruction Tuning & Chain-of-Thought**: We applied instruction tuning with chain-of-thought prompts to improve reasoning capabilities.
-- **Compute Resources**: Training conducted on ASU’s SOL supercomputing cluster using 4 CPU nodes and a single NVIDIA A100 GPU.
+- **Compute Resources**: Training conducted on ASU’s SOL supercomputing cluster powered with a couple NVIDIA A100 GPUs.
 - **Training Framework**: Built with Hugging Face Transformers, Accelerate, and PyTorch.
 
 ## Datasets

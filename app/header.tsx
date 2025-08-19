@@ -2,11 +2,11 @@
 import { TextEffect } from '@/components/ui/text-effect'
 import Image from 'next/image'
 import Link from 'next/link'
-import Avatar from "@/@public/profile.png"
+import Avatar from '@/@public/profile.png'
 
 export function Header() {
   return (
-    <header className="mb-8 flex items-center gap-4 justify-start">
+    <header className="mb-8 flex items-center justify-start gap-4">
       <Image
         src={Avatar}
         alt="Avatar"

@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react'
+import useProgress from '@/hooks/useProgress'
 import { motion } from 'motion/react'
 import { XIcon } from 'lucide-react'
 import { Spotlight } from '@/components/ui/spotlight'
@@ -11,13 +11,9 @@ import {
   MorphingDialogClose,
   MorphingDialogContainer,
 } from '@/components/ui/morphing-dialog'
-import {
-  PROJECTS,
-  WORK_EXPERIENCE,
-  EMAIL,
-  SOCIAL_LINKS,
-} from './data'
-import { Progress } from "@/components/ui/progress"
+import { PROJECTS, WORK_EXPERIENCE, EMAIL, SOCIAL_LINKS } from './data'
+import { Progress } from '@/components/ui/progress'
+import { TextEffect } from '@/components/ui/text-effect'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -99,7 +95,7 @@ function MagneticSocialLink({
     <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
       <a
         href={link}
-        target={"_blank"}
+        target={'_blank'}
         className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
       >
         {children}
@@ -124,25 +120,10 @@ function MagneticSocialLink({
 }
 
 export default function Personal() {
-  const [progress, setProgress] = useState(0)
-
-  useEffect(() => {
-    const startDate = new Date('2025-06-01').getTime();
-    const endDate = new Date('2025-08-13').getTime();
-
-    const updateProgress = () => {
-      const now = Date.now();
-      const percentage = Math.max(
-        0,
-        Math.min(
-          100,
-          ((now - startDate) / (endDate - startDate)) * 100
-        )
-      );
-      setProgress(percentage);
-    };
-    updateProgress();
-  }, []);
+  const { graderProgress: progress, taProgress } = useProgress({
+    grader: { start: '2025-08-18', end: '2025-12-13' },
+    ta: { start: '2025-08-21', end: '2025-12-13' },
+  })
 
   return (
     <motion.main
@@ -158,7 +139,8 @@ export default function Personal() {
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
             Final Year Undergraduate Student from Arizona State University with
-            Three Years of Experience in Software Engineering.
+            Three Years of Experience in Software Engineering, Mobile
+            Development, and Web.
           </p>
         </div>
       </motion.section>
@@ -167,18 +149,44 @@ export default function Personal() {
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
+        <h3 className="mb-5 text-lg font-medium text-green-500">Now</h3>
 
-          <h3 className="mb-5 text-lg text-green-500 font-medium">Now</h3>
+        <div className="space-y-4">
+          <Progress
+            value={progress}
+            label={
+              <TextEffect
+                as="p"
+                preset="scale"
+                per="char"
+                className="text-zinc-900 dark:text-white"
+                delay={1}
+              >
+                Grader @355
+              </TextEffect>
+            }
+            className="w-[100%]"
+          />
+        </div>
 
-          <div className='space-y-4'>
-
-          <Progress value={progress} label={"Intern @Sport Sitters"} className="w-[100%]" />
-
-          </div>
-
+        <div className="mt-4 space-y-4">
+          <Progress
+            value={taProgress}
+            label={
+              <TextEffect
+                as="p"
+                preset="scale"
+                per="char"
+                className="text-zinc-900 dark:text-white"
+                delay={1}
+              >
+                Teaching Assistant @355
+              </TextEffect>
+            }
+            className="w-[100%]"
+          />
+        </div>
       </motion.section>
-
-      
 
       <motion.section
         variants={VARIANTS_SECTION}
@@ -197,7 +205,7 @@ export default function Personal() {
                   href={project.link}
                 >
                   {project.name}
-                  <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 dark:bg-zinc-50 transition-all duration-200 group-hover:max-w-full"></span>
+                  <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 transition-all duration-200 group-hover:max-w-full dark:bg-zinc-50"></span>
                 </a>
                 <p className="text-base text-zinc-600 dark:text-zinc-400">
                   {project.description}
@@ -216,7 +224,7 @@ export default function Personal() {
         <div className="flex flex-col space-y-2">
           {WORK_EXPERIENCE.map((job) => (
             <a
-              className="relative overflow-hidden rounded-2xl bg-zinc-300/30 dark:bg-zinc-600/30 p-[1px]"
+              className="relative overflow-hidden rounded-2xl bg-zinc-300/30 p-[1px] dark:bg-zinc-600/30"
               href={job.link}
               rel="noopener noreferrer"
               key={job.id}
@@ -230,6 +238,14 @@ export default function Personal() {
                   <div>
                     <h4 className="font-normal dark:text-zinc-100">
                       {job.title}
+                      {job.isNew ? (
+                        <span
+                          className="ml-1 text-sm text-green-500"
+                          aria-hidden
+                        >
+                          &#9733;
+                        </span>
+                      ) : null}
                     </h4>
                     <p className="text-zinc-500 dark:text-zinc-400">
                       {job.company}
@@ -244,42 +260,6 @@ export default function Personal() {
           ))}
         </div>
       </motion.section>
-
-      {/*<motion.section*/}
-      {/*  variants={VARIANTS_SECTION}*/}
-      {/*  transition={TRANSITION_SECTION}*/}
-      {/*>*/}
-      {/*  <h3 className="mb-3 text-lg font-medium">Blog</h3>*/}
-      {/*  <div className="flex flex-col space-y-0">*/}
-      {/*    <AnimatedBackground*/}
-      {/*      enableHover*/}
-      {/*      className="h-full w-full rounded-lg bg-zinc-100 dark:bg-zinc-900/80"*/}
-      {/*      transition={{*/}
-      {/*        type: 'spring',*/}
-      {/*        bounce: 0,*/}
-      {/*        duration: 0.2,*/}
-      {/*      }}*/}
-      {/*    >*/}
-      {/*      {BLOG_POSTS.map((post) => (*/}
-      {/*        <Link*/}
-      {/*          key={post.uid}*/}
-      {/*          className="-mx-3 rounded-xl px-3 py-3"*/}
-      {/*          href={post.link}*/}
-      {/*          data-id={post.uid}*/}
-      {/*        >*/}
-      {/*          <div className="flex flex-col space-y-1">*/}
-      {/*            <h4 className="font-normal dark:text-zinc-100">*/}
-      {/*              {post.title}*/}
-      {/*            </h4>*/}
-      {/*            <p className="text-zinc-500 dark:text-zinc-400">*/}
-      {/*              {post.description}*/}
-      {/*            </p>*/}
-      {/*          </div>*/}
-      {/*        </Link>*/}
-      {/*      ))}*/}
-      {/*    </AnimatedBackground>*/}
-      {/*  </div>*/}
-      {/*</motion.section>*/}
 
       <motion.section
         variants={VARIANTS_SECTION}
